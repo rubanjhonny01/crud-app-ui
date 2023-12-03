@@ -1,0 +1,22 @@
+<div mat-dialog-title>
+    <h1>Employee Form</h1>
+</div>
+<form [formGroup]="reviewForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>review</mat-label>
+                <input [value]="comment" matInput type="text" onchange="onReview(comment)" placeholder="review comments" formControlName="review">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <app-star-rating [value]="currentRating" (rated)="onRated($event)" formControlName="rating"></app-star-rating>
+            <p>Current Rating: {{ currentRating }}</p>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" onclick="onSubmit()">Submit</button>
+    </div>
+    </form>
